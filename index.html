@@ -3,177 +3,2136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلای معتمدی | پلتفرم خرید و فروش آنلاین طلا</title>
+    <title>طلای معتمدی | پیشرو در خرید و فروش آنلاین طلا و نقره</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="خرید و فروش آنلاین طلا و نقره بدون اجرت و مالیات با ضمانت اصالت">
+    <meta name="description" content="خرید و فروش آنلاین طلا و نقره بدون اجرت و مالیات با ضمانت اصالت و تحویل فیزیکی">
+    <meta name="keywords" content="خرید طلا, فروش طلا, سرمایه گذاری طلا, طلای آب شده, سکه, نقره">
     <meta property="og:title" content="طلای معتمدی">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://talamotamedi.com">
     <meta name="theme-color" content="#d4a017">
+    <meta name="robots" content="index, follow">
     
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Chart.js for Gold Price Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     
-    <!-- Main Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <!-- ===========================================
-    PRELOADER
-    =========================================== -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="gold-spinner"></div>
-            <p style="color:#d4a017;margin-top:20px;font-weight:bold;">طلای معتمدی</p>
-        </div>
+
+<!-- ============================================================
+PRELOADER
+============================================================ -->
+<div id="preloader">
+    <div class="preloader-inner">
+        <div class="gold-spinner"></div>
+        <div class="preloader-text">طلای معتمدی</div>
+        <div class="preloader-sub">در حال بارگذاری...</div>
     </div>
+</div>
 
-    <!-- ===========================================
-    HEADER
-    =========================================== -->
-    <header class="header" id="mainHeader">
-        <div class="container header-inner">
+<!-- ============================================================
+HEADER - STICKY NAVIGATION
+============================================================ -->
+<header class="header" id="mainHeader">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- Logo -->
             <div class="logo" onclick="navigateTo('home')">
-                <i class="fas fa-coins"></i>
-                <span>
-                    طلای معتمدی
-                    <small>پلتفرم معتبر طلا</small>
-                </span>
+                <div class="logo-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <div class="logo-text">
+                    <span>طلای معتمدی</span>
+                    <small>پلتفرم معتبر خرید و فروش طلا</small>
+                </div>
             </div>
 
-            <div class="header-price" id="headerPrice">
-                <i class="fas fa-gem"></i>
-                <span>هر گرم طلا ۱۸ عیار:</span>
-                <span class="gold-price" id="headerGoldPrice">۱۸,۳۲۷,۶۰۰</span>
-                <span>تومان</span>
-                <span class="price-change" id="priceChange">+۲.۴۲%</span>
+            <!-- Live Price Ticker -->
+            <div class="header-ticker" id="headerTicker">
+                <div class="ticker-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="ticker-content">
+                    <span class="ticker-label">هر گرم طلا ۱۸ عیار</span>
+                    <span class="ticker-price" id="headerGoldPrice">۱۸,۳۲۷,۶۰۰</span>
+                    <span class="ticker-currency">تومان</span>
+                    <span class="ticker-change positive" id="priceChange">▲ ۲.۴۲%</span>
+                </div>
             </div>
 
-            <div class="mobile-toggle" onclick="toggleMenu()">
+            <!-- Mobile Toggle -->
+            <div class="mobile-toggle" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </div>
 
+            <!-- Navigation Menu -->
             <nav class="nav-menu" id="mainMenu">
-                <a href="#" class="active" data-page="home">
+                <a href="#" class="nav-link active" data-page="home" onclick="navigateTo('home')">
                     <i class="fas fa-home"></i> خانه
                 </a>
-                <a href="#" data-page="chart">
+                <a href="#" class="nav-link" data-page="chart" onclick="navigateTo('chart')">
                     <i class="fas fa-chart-line"></i> نمودار
                 </a>
-                <a href="#" data-page="gha">
+                <a href="#" class="nav-link" data-page="gha" onclick="navigateTo('gha')">
                     <i class="fas fa-piggy-bank"></i> قلک
-                    <span class="badge" id="ghaBadge">۰.۷۰۰g</span>
+                    <span class="nav-badge" id="ghaBadge">۰.۷۰۰</span>
                 </a>
-                <a href="#" data-page="shop">
+                <a href="#" class="nav-link" data-page="shop" onclick="navigateTo('shop')">
                     <i class="fas fa-store"></i> خرید
                 </a>
-                <a href="#" data-page="cart">
+                <a href="#" class="nav-link" data-page="cart" onclick="navigateTo('cart')">
                     <i class="fas fa-shopping-cart"></i> سبد
-                    <span class="badge" id="cartCount">۰</span>
+                    <span class="nav-badge" id="cartCount">۰</span>
                 </a>
-                <a href="#" data-page="invite">
+                <a href="#" class="nav-link" data-page="invite" onclick="navigateTo('invite')">
                     <i class="fas fa-user-friends"></i> دعوت
                 </a>
-                <a href="#" data-page="about">
+                <a href="#" class="nav-link" data-page="about" onclick="navigateTo('about')">
                     <i class="fas fa-info-circle"></i> درباره
                 </a>
-                <a href="#" data-page="admin" id="adminLink" style="display:none;">
+                <a href="#" class="nav-link" data-page="admin" id="adminLink" style="display:none;" onclick="navigateTo('admin')">
                     <i class="fas fa-user-cog"></i> مدیریت
                 </a>
                 <button class="btn-gold" onclick="handleAuth()">
-                    <i class="fas fa-user"></i> ورود
+                    <i class="fas fa-user-circle"></i> ورود
                 </button>
             </nav>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- ===========================================
-    NOTIFICATION SYSTEM
-    =========================================== -->
-    <div class="notification" id="notif">
-        <div class="notif-content">
-            <span class="notif-icon"><i class="fas fa-bell"></i></span>
-            <span id="notifText">پیام سیستم</span>
-            <span class="notif-close" onclick="closeNotif()">&times;</span>
+<!-- ============================================================
+NOTIFICATION SYSTEM
+============================================================ -->
+<div class="notification" id="notification">
+    <div class="notification-content">
+        <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div class="notification-text" id="notifText">پیام سیستم</div>
+        <div class="notification-close" onclick="closeNotification()">
+            <i class="fas fa-times"></i>
         </div>
     </div>
+</div>
 
-    <!-- ===========================================
-    MAIN CONTENT
-    =========================================== -->
-    <main class="main-content">
-        <!-- تمام صفحات با JavaScript لود می‌شوند -->
-        <div id="pageContainer"></div>
-    </main>
+<!-- ============================================================
+MAIN CONTENT - ALL PAGES LOAD HERE
+============================================================ -->
+<main class="main-content" id="mainContent">
+    <!-- All pages will be dynamically loaded here -->
+</main>
 
-    <!-- ===========================================
-    FOOTER
-    =========================================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4><i class="fas fa-coins" style="color:#d4a017;"></i> طلای معتمدی</h4>
-                    <p style="color:#888;font-size:0.9rem;">پلتفرم معتبر خرید و فروش آنلاین طلا و نقره با مجوزهای رسمی</p>
-                    <div class="footer-trust" style="margin-top:12px;">
-                        <span>✅ اینماد</span>
-                        <span>✅ اتحادیه طلا</span>
-                        <span>✅ نظام صنفی</span>
-                    </div>
+<!-- ============================================================
+FOOTER
+============================================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Column 1: Brand -->
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <i class="fas fa-coins"></i>
+                    <span>طلای معتمدی</span>
                 </div>
-                <div>
-                    <h4>دسترسی سریع</h4>
-                    <ul>
-                        <li><a href="#" onclick="navigateTo('home')">خانه</a></li>
-                        <li><a href="#" onclick="navigateTo('shop')">خرید طلا</a></li>
-                        <li><a href="#" onclick="navigateTo('gha')">قلک طلا</a></li>
-                        <li><a href="#" onclick="navigateTo('chart')">نمودار قیمت</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>خدمات</h4>
-                    <ul>
-                        <li><a href="#" onclick="navigateTo('shop')">خرید قسطی</a></li>
-                        <li><a href="#" onclick="navigateTo('gha')">سرمایه‌گذاری</a></li>
-                        <li><a href="#" onclick="showNotif('درخواست وام ثبت شد')">وام طلا</a></li>
-                        <li><a href="#" onclick="showNotif('تحویل فیزیکی درخواست شد')">تحویل فیزیکی</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>تماس با ما</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
-                        <li><i class="fas fa-envelope"></i> info@talamotamedi.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> تهران، ولیعصر</li>
-                    </ul>
-                    <div class="social-icons" style="margin-top:12px;">
-                        <i class="fab fa-telegram" onclick="showNotif('کانال تلگرام')"></i>
-                        <i class="fab fa-instagram" onclick="showNotif('اینستاگرام')"></i>
-                        <i class="fab fa-whatsapp" onclick="showNotif('واتساپ')"></i>
-                        <i class="fab fa-youtube" onclick="showNotif('یوتیوب')"></i>
-                    </div>
+                <p class="footer-desc">پلتفرم معتبر خرید و فروش آنلاین طلا و نقره با مجوزهای رسمی از اتحادیه طلا و جواهرات و نظام صنفی رایانه‌ای.</p>
+                <div class="footer-trust">
+                    <span><i class="fas fa-check-circle"></i> اینماد</span>
+                    <span><i class="fas fa-check-circle"></i> اتحادیه طلا</span>
+                    <span><i class="fas fa-check-circle"></i> نظام صنفی</span>
+                    <span><i class="fas fa-check-circle"></i> فینتک</span>
                 </div>
             </div>
-            <div class="copy">
-                &copy; ۱۴۰۵ تمامی حقوق برای <strong>طلای معتمدی</strong> محفوظ است. | 
-                <span style="color:#666;font-size:0.8rem;">طراحی و توسعه با ❤️</span>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col">
+                <h4>دسترسی سریع</h4>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('home')"><i class="fas fa-chevron-left"></i> خانه</a></li>
+                    <li><a href="#" onclick="navigateTo('shop')"><i class="fas fa-chevron-left"></i> خرید طلا</a></li>
+                    <li><a href="#" onclick="navigateTo('gha')"><i class="fas fa-chevron-left"></i> قلک طلا</a></li>
+                    <li><a href="#" onclick="navigateTo('chart')"><i class="fas fa-chevron-left"></i> نمودار قیمت</a></li>
+                    <li><a href="#" onclick="navigateTo('invite')"><i class="fas fa-chevron-left"></i> دعوت دوستان</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Services -->
+            <div class="footer-col">
+                <h4>خدمات ما</h4>
+                <ul>
+                    <li><a href="#" onclick="showNotification('درخواست وام ثبت شد')"><i class="fas fa-chevron-left"></i> وام طلا</a></li>
+                    <li><a href="#" onclick="showNotification('تحویل فیزیکی درخواست شد')"><i class="fas fa-chevron-left"></i> تحویل فیزیکی</a></li>
+                    <li><a href="#" onclick="showNotification('خرید قسطی فعال شد')"><i class="fas fa-chevron-left"></i> خرید قسطی</a></li>
+                    <li><a href="#" onclick="showNotification('سرمایه‌گذاری زرگر')"><i class="fas fa-chevron-left"></i> سرمایه‌گذاری</a></li>
+                    <li><a href="#" onclick="showNotification('مشاوره رایگان')"><i class="fas fa-chevron-left"></i> مشاوره رایگان</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact -->
+            <div class="footer-col">
+                <h4>تماس با ما</h4>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                    <li><i class="fas fa-envelope"></i> info@talamotamedi.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳</li>
+                    <li><i class="fas fa-clock"></i> شنبه تا پنج‌شنبه ۹ الی ۲۰</li>
+                </ul>
+                <div class="footer-social">
+                    <a href="#" onclick="showNotification('کانال تلگرام')"><i class="fab fa-telegram"></i></a>
+                    <a href="#" onclick="showNotification('اینستاگرام')"><i class="fab fa-instagram"></i></a>
+                    <a href="#" onclick="showNotification('واتساپ')"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" onclick="showNotification('یوتیوب')"><i class="fab fa-youtube"></i></a>
+                    <a href="#" onclick="showNotification('توییتر')"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <!-- ===========================================
-    SCRIPTS
-    =========================================== -->
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/gha.js"></script>
-    <script src="assets/js/cart.js"></script>
-    <script src="assets/js/admin.js"></script>
-    <script src="assets/js/chart.js"></script>
-    <script src="assets/js/main.js"></script>
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                &copy; ۱۴۰۵ تمامی حقوق برای <strong>طلای معتمدی</strong> محفوظ است.
+            </div>
+            <div class="footer-developer">
+                طراحی و توسعه با <i class="fas fa-heart" style="color:#d4a017;"></i> توسط تیم طلای معتمدی
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================================
+SCROLL TO TOP BUTTON
+============================================================ -->
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ============================================================
+MAIN JAVASCRIPT - COMPLETE APPLICATION
+============================================================ -->
+<script>
+// =====================================================================
+// 1. APPLICATION STATE
+// =====================================================================
+const AppState = {
+    goldPrice: 18327600,
+    goldPriceHistory: [],
+    isAdmin: false,
+    currentPage: 'home',
+    userPhone: null,
+    ghaBalance: parseFloat(localStorage.getItem('tala_gha_balance')) || 0.700,
+    ghaHistory: JSON.parse(localStorage.getItem('tala_gha_history')) || [],
+    cartItems: JSON.parse(localStorage.getItem('tala_cart_items')) || [],
+    adminOrders: JSON.parse(localStorage.getItem('tala_admin_orders')) || [],
+    adminProducts: JSON.parse(localStorage.getItem('tala_admin_products')) || [],
+    adminCardNumber: localStorage.getItem('tala_admin_card') || '۶۰۳۷-۱۲۳۴-۵۶۷۸-۹۰۱۲',
+    notifications: [],
+    inviteCode: 'GOLD-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+    referralCount: 12,
+    referralReward: 0.500,
+};
+
+// =====================================================================
+// 2. DEFAULT PRODUCTS
+// =====================================================================
+const DEFAULT_PRODUCTS = [
+    { id: 1, name: 'طلای آبشده ۱۸ عیار', category: 'gold', price: 18327600, weight: 1, stock: 100, image: 'gold' },
+    { id: 2, name: 'سکه بهار آزادی', category: 'coin', price: 149000000, weight: 8.133, stock: 50, image: 'coin' },
+    { id: 3, name: 'نیم سکه بهار آزادی', category: 'coin', price: 74500000, weight: 4.066, stock: 30, image: 'coin' },
+    { id: 4, name: 'ربع سکه', category: 'coin', price: 37250000, weight: 2.033, stock: 40, image: 'coin' },
+    { id: 5, name: 'انگشتر طلا (طرح مدرن)', category: 'jewelry', price: 25000000, weight: 1.2, stock: 20, image: 'ring' },
+    { id: 6, name: 'گردنبند طلا (طرح کلاسیک)', category: 'jewelry', price: 42000000, weight: 2.5, stock: 15, image: 'necklace' },
+    { id: 7, name: 'دستبند طلا (طرح زرین)', category: 'jewelry', price: 18000000, weight: 1.0, stock: 25, image: 'bracelet' },
+    { id: 8, name: 'نقره خالص (شمش)', category: 'silver', price: 280000, weight: 1, stock: 200, image: 'silver' },
+    { id: 9, name: 'شمش طلا ۱۰ گرمی', category: 'gold', price: 183276000, weight: 10, stock: 15, image: 'gold' },
+    { id: 10, name: 'شمش طلا ۵ گرمی', category: 'gold', price: 91638000, weight: 5, stock: 25, image: 'gold' },
+    { id: 11, name: 'سکه پارسیان', category: 'coin', price: 165000000, weight: 8.5, stock: 20, image: 'coin' },
+    { id: 12, name: 'پلاک طلا (طرح خوش‌شانسی)', category: 'jewelry', price: 8500000, weight: 0.5, stock: 35, image: 'plaque' },
+];
+
+// =====================================================================
+// 3. INITIALIZATION
+// =====================================================================
+if (AppState.adminProducts.length === 0) {
+    AppState.adminProducts = DEFAULT_PRODUCTS;
+    localStorage.setItem('tala_admin_products', JSON.stringify(AppState.adminProducts));
+}
+
+if (AppState.adminOrders.length === 0) {
+    AppState.adminOrders = [
+        { id: 1, user: '۰۹۹۸۱۰۶۴۵۰۵', product: 'طلای آبشده ۱۸ عیار', weight: '۰.۵۰۰ گرم', amount: 9163800, status: 'pending', date: '۱۴۰۵/۰۵/۰۴', time: '۱۴:۳۲' },
+        { id: 2, user: '۰۹۱۲۳۴۵۶۷۸۹', product: 'سکه بهار آزادی', weight: '۸.۱۳۳ گرم', amount: 149000000, status: 'confirmed', date: '۱۴۰۵/۰۵/۰۳', time: '۱۰:۱۵' },
+        { id: 3, user: '۰۹۳۳۳۳۳۳۳۳', product: 'انگشتر طلا', weight: '۱.۲۰۰ گرم', amount: 25000000, status: 'cancelled', date: '۱۴۰۵/۰۵/۰۲', time: '۱۶:۴۰' },
+        { id: 4, user: '۰۹۰۱۲۳۴۵۶۷', product: 'نقره خالص', weight: '۲.۰۰۰ گرم', amount: 560000, status: 'pending', date: '۱۴۰۵/۰۵/۰۴', time: '۰۹:۲۰' },
+        { id: 5, user: '۰۹۳۵۵۵۵۵۵۵', product: 'شمش طلا ۱۰ گرمی', weight: '۱۰.۰۰۰ گرم', amount: 183276000, status: 'pending', date: '۱۴۰۵/۰۵/۰۴', time: '۱۱:۴۵' },
+    ];
+    localStorage.setItem('tala_admin_orders', JSON.stringify(AppState.adminOrders));
+}
+
+if (AppState.ghaHistory.length === 0) {
+    AppState.ghaHistory = [
+        { type: 'buy', amount: 0.5, price: 9163800, status: 'confirmed', date: '۱۴۰۵/۰۵/۰۱', time: '۱۵:۲۰' },
+        { type: 'buy', amount: 0.2, price: 3665520, status: 'pending', date: '۱۴۰۵/۰۵/۰۳', time: '۱۰:۳۰' },
+        { type: 'buy', amount: 1.0, price: 18327600, status: 'confirmed', date: '۱۴۰۵/۰۴/۲۸', time: '۰۹:۱۵' },
+        { type: 'buy', amount: 0.3, price: 5498280, status: 'confirmed', date: '۱۴۰۵/۰۴/۲۵', time: '۱۴:۰۰' },
+    ];
+    localStorage.setItem('tala_gha_history', JSON.stringify(AppState.ghaHistory));
+}
+
+// =====================================================================
+// 4. CORE FUNCTIONS
+// =====================================================================
+
+// -------- Navigation --------
+function navigateTo(page) {
+    if (page === 'admin' && !AppState.isAdmin) {
+        showNotification('⛔ شما دسترسی به پنل مدیریت ندارید');
+        return;
+    }
+    
+    AppState.currentPage = page;
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.page === page);
+    });
+    
+    renderPage(page);
+    
+    // Close mobile menu
+    document.getElementById('mainMenu').classList.remove('open');
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Update URL hash
+    history.pushState(null, '', '#' + page);
+}
+
+// -------- Page Renderer --------
+function renderPage(page) {
+    const container = document.getElementById('mainContent');
+    
+    switch(page) {
+        case 'home': container.innerHTML = renderHome(); break;
+        case 'chart': container.innerHTML = renderChart(); break;
+        case 'gha': container.innerHTML = renderGha(); break;
+        case 'shop': container.innerHTML = renderShop(); break;
+        case 'cart': container.innerHTML = renderCart(); break;
+        case 'invite': container.innerHTML = renderInvite(); break;
+        case 'about': container.innerHTML = renderAbout(); break;
+        case 'admin': container.innerHTML = renderAdmin(); break;
+        default: container.innerHTML = renderHome();
+    }
+    
+    // Re-initialize page-specific features
+    if (page === 'chart') setTimeout(initChart, 100);
+    if (page === 'gha') updateGhaUI();
+    if (page === 'cart') updateCartUI();
+    if (page === 'admin') updateAdminUI();
+    
+    // Update price display
+    updatePriceDisplay();
+}
+
+// -------- Price Display --------
+function updatePriceDisplay() {
+    const formatted = formatPrice(AppState.goldPrice);
+    document.getElementById('headerGoldPrice').textContent = formatted;
+    const heroPrice = document.getElementById('heroPrice');
+    if (heroPrice) heroPrice.textContent = formatted;
+}
+
+// -------- Format Price --------
+function formatPrice(price) {
+    return price.toLocaleString('fa-IR');
+}
+
+// -------- Format Number --------
+function formatNumber(num) {
+    return num.toFixed(3).toLocaleString('fa-IR');
+}
+
+// -------- Show Notification --------
+function showNotification(msg) {
+    const el = document.getElementById('notification');
+    document.getElementById('notifText').textContent = msg;
+    el.classList.add('show');
+    clearTimeout(el._timeout);
+    el._timeout = setTimeout(() => el.classList.remove('show'), 5000);
+}
+
+function closeNotification() {
+    document.getElementById('notification').classList.remove('show');
+}
+
+// -------- Toggle Mobile Menu --------
+function toggleMobileMenu() {
+    document.getElementById('mainMenu').classList.toggle('open');
+}
+
+// -------- Authentication --------
+function handleAuth() {
+    const phone = prompt('📱 شماره موبایل خود را وارد کنید:');
+    if (!phone) return;
+    
+    if (phone === '09981064505') {
+        AppState.isAdmin = true;
+        localStorage.setItem('tala_admin', 'true');
+        document.getElementById('adminLink').style.display = 'block';
+        showNotification('👋 خوش آمدید ادمین عزیز!');
+        navigateTo('admin');
+    } else {
+        AppState.userPhone = phone;
+        localStorage.setItem('tala_user', phone);
+        showNotification(`✅ خوش آمدید ${phone}`);
+        navigateTo('home');
+    }
+}
+
+// -------- Update Gold Price (Simulation) --------
+function updateGoldPrice() {
+    const min = 17500000;
+    const max = 19500000;
+    AppState.goldPrice = Math.floor(Math.random() * (max - min + 1)) + min;
+    updatePriceDisplay();
+    showNotification(`💰 قیمت طلا بروزرسانی شد: ${formatPrice(AppState.goldPrice)} تومان`);
+    // Update chart if visible
+    if (window._chartInstance) updateChartData();
+}
+
+// -------- Scroll to Top Button --------
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 500) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+
+// =====================================================================
+// 5. PAGE RENDERERS
+// =====================================================================
+
+// -------- HOME PAGE --------
+function renderHome() {
+    return `
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="hero-badge">✨ پلتفرم معتبر خرید و فروش طلا</div>
+                    <h1 class="hero-title">
+                        <i class="fas fa-gem text-gold"></i> 
+                        طلای معتمدی
+                    </h1>
+                    <p class="hero-subtitle">
+                        خرید و فروش آنلاین طلا و نقره <strong>بدون اجرت و مالیات</strong> با ضمانت اصالت و امکان تحویل فیزیکی
+                    </p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <i class="fas fa-store"></i>
+                            <span>۲۳ شعبه</span>
+                        </div>
+                        <div class="hero-stat">
+                            <i class="fas fa-users"></i>
+                            <span>۲۰ میلیون کاربر</span>
+                        </div>
+                        <div class="hero-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>پشتیبانی ۲۴/۷</span>
+                        </div>
+                        <div class="hero-stat">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>ضمانت اصالت</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-gold btn-large" onclick="navigateTo('shop')">
+                            <i class="fas fa-shopping-cart"></i> شروع خرید
+                        </button>
+                        <button class="btn-outline btn-large" onclick="navigateTo('gha')">
+                            <i class="fas fa-piggy-bank"></i> قلک طلا
+                        </button>
+                        <button class="btn-outline btn-large" onclick="navigateTo('chart')">
+                            <i class="fas fa-chart-line"></i> نمودار قیمت
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-price-card">
+                    <div class="price-card-header">
+                        <i class="fas fa-gem"></i>
+                        <span>قیمت لحظه‌ای طلا</span>
+                    </div>
+                    <div class="price-card-value" id="heroPrice">${formatPrice(AppState.goldPrice)}</div>
+                    <div class="price-card-label">هر گرم طلا ۱۸ عیار</div>
+                    <div class="price-card-change positive">
+                        <i class="fas fa-arrow-up"></i> ۲.۴۲% (${formatPrice(443000)} تومان)
+                    </div>
+                    <div class="price-card-range">
+                        <span>کمترین: ${formatPrice(18250544)}</span>
+                        <span>بیشترین: ${formatPrice(18802376)}</span>
+                    </div>
+                    <button class="btn-outline" style="width:100%;margin-top:15px;" onclick="updateGoldPrice()">
+                        <i class="fas fa-sync-alt"></i> بروزرسانی قیمت
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h4>بدون اجرت و مالیات</h4>
+                    <p>خرید طلا بدون هیچ هزینه اضافی</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>ضمانت اصالت</h4>
+                    <p>همراه با فاکتور رسمی و کد ریگیری</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-truck"></i></div>
+                    <h4>تحویل فیزیکی</h4>
+                    <p>دریافت طلا از ۲۳ شعبه سراسر کشور</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-coins"></i></div>
+                    <h4>خرید از ۱ میلی‌گرم</h4>
+                    <p>سرمایه‌گذاری با هر بودجه‌ای</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+                    <h4>پشتیبانی ۲۴ ساعته</h4>
+                    <p>۷ روز هفته، حتی در روزهای تعطیل</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-credit-card"></i></div>
+                    <h4>خرید قسطی</h4>
+                    <p>تا ۲۴ ماه اقساط بدون سود</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">خدمات ویژه طلای معتمدی</h2>
+                <p class="section-subtitle">همه آنچه برای سرمایه‌گذاری در طلا نیاز دارید</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-gold"></i></div>
+                    <h3>خرید طلای آبشده</h3>
+                    <p>طلای آبشده ۱۸ عیار با بهترین قیمت بازار</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> بدون اجرت</li>
+                        <li><i class="fas fa-check-circle"></i> ضمانت اصالت</li>
+                        <li><i class="fas fa-check-circle"></i> تحویل فیزیکی</li>
+                    </ul>
+                    <button class="btn-gold w-full" onclick="navigateTo('shop')">خرید طلا</button>
+                </div>
+                <div class="service-card featured">
+                    <div class="service-badge">محبوب</div>
+                    <div class="service-icon"><i class="fas fa-piggy-bank"></i></div>
+                    <h3>قلک طلا</h3>
+                    <p>ذخیره‌سازی پله‌ای طلا با هر بودجه‌ای</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> از ۱ میلی‌گرم</li>
+                        <li><i class="fas fa-check-circle"></i> سود ۱۲٪ سالیانه</li>
+                        <li><i class="fas fa-check-circle"></i> برداشت آنی</li>
+                    </ul>
+                    <button class="btn-gold w-full" onclick="navigateTo('gha')">ورود به قلک</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>وام طلا</h3>
+                    <p>دریافت وام بدون ضامن با وثیقه طلا</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> تا ۷۰٪ ارزش طلا</li>
+                        <li><i class="fas fa-check-circle"></i> بدون ضامن</li>
+                        <li><i class="fas fa-check-circle"></i> بازپرداخت ۳۰ روزه</li>
+                    </ul>
+                    <button class="btn-gold w-full" onclick="showNotification('درخواست وام شما ثبت شد')">درخواست وام</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+                    <h3>دعوت دوستان</h3>
+                    <p>به ازای هر دعوت، پاداش طلایی دریافت کنید</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> هدیه طلا</li>
+                        <li><i class="fas fa-check-circle"></i> افزایش دارایی</li>
+                        <li><i class="fas fa-check-circle"></i> فرصت طلایی</li>
+                    </ul>
+                    <button class="btn-gold w-full" onclick="navigateTo('invite')">دعوت کنید</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-wrapper">
+                <div class="trust-content">
+                    <h2>اعتبار قانونی طلای معتمدی</h2>
+                    <p>طلای معتمدی با اخذ مجوزهای رسمی و قانونی، بستری امن و مطمئن برای خرید و فروش آنلاین طلا فراهم کرده است.</p>
+                    <div class="trust-logos">
+                        <span><i class="fas fa-check-circle"></i> اینماد</span>
+                        <span><i class="fas fa-check-circle"></i> اتحادیه طلا</span>
+                        <span><i class="fas fa-check-circle"></i> نظام صنفی</span>
+                        <span><i class="fas fa-check-circle"></i> فینتک</span>
+                        <span><i class="fas fa-check-circle"></i> بانک ملی</span>
+                    </div>
+                    <button class="btn-gold" onclick="navigateTo('about')">اطلاعات بیشتر</button>
+                </div>
+                <div class="trust-stats">
+                    <div class="trust-stat">
+                        <span class="number">۲۳</span>
+                        <span class="label">شعبه فعال</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="number">۲۰M+</span>
+                        <span class="label">کاربر فعال</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="number">۳۳+</span>
+                        <span class="label">کیلوگرم معامله روزانه</span>
+                    </div>
+                    <div class="trust-stat">
+                        <span class="number">۲۴/۷</span>
+                        <span class="label">پشتیبانی شبانه‌روزی</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- CHART PAGE --------
+function renderChart() {
+    return `
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-chart-line text-gold"></i> نمودار قیمت لحظه‌ای طلا</h2>
+                <p class="section-subtitle">تحلیل و بررسی روند قیمت طلا در بازه‌های مختلف</p>
+            </div>
+            
+            <div class="chart-card">
+                <div class="chart-controls">
+                    <button class="chart-btn active" onclick="setChartRange('day', this)">۲۴ ساعت</button>
+                    <button class="chart-btn" onclick="setChartRange('week', this)">هفته</button>
+                    <button class="chart-btn" onclick="setChartRange('month', this)">ماه</button>
+                    <button class="chart-btn" onclick="setChartRange('year', this)">سال</button>
+                    <button class="chart-btn btn-gold" onclick="updateChartData()">
+                        <i class="fas fa-sync-alt"></i> بروزرسانی
+                    </button>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="goldChart" height="350"></canvas>
+                </div>
+                <div class="chart-info">
+                    <div class="chart-info-item">
+                        <span class="label">قیمت فعلی:</span>
+                        <span class="value text-gold">${formatPrice(AppState.goldPrice)} تومان</span>
+                    </div>
+                    <div class="chart-info-item">
+                        <span class="label">تغییرات:</span>
+                        <span class="value positive">▲ +۲.۴۲%</span>
+                    </div>
+                    <div class="chart-info-item">
+                        <span class="label">بیشترین قیمت:</span>
+                        <span class="value">${formatPrice(18802376)} تومان</span>
+                    </div>
+                    <div class="chart-info-item">
+                        <span class="label">کمترین قیمت:</span>
+                        <span class="value">${formatPrice(18250544)} تومان</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-history-card">
+                <h4>📊 قیمت‌های روزانه</h4>
+                <div class="price-history-grid" id="dailyPriceGrid">
+                    ${generateDailyPrices()}
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- GHA (Piggy Bank) PAGE --------
+function renderGha() {
+    return `
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-piggy-bank text-gold"></i> قلک طلای معتمدی</h2>
+                <p class="section-subtitle">خرید پله‌ای طلا و ذخیره‌سازی برای آینده</p>
+            </div>
+
+            <div class="gha-grid">
+                <!-- Left: Purchase Section -->
+                <div class="gha-card">
+                    <h3><i class="fas fa-plus-circle text-gold"></i> خرید طلا برای قلک</h3>
+                    <p class="text-muted">از ۱ میلی‌گرم تا ۱۰ کیلوگرم طلا خریداری کنید</p>
+                    
+                    <div class="gha-input-group">
+                        <div class="gha-input-wrapper">
+                            <input type="number" id="ghaAmount" placeholder="مقدار" min="0.001" step="0.001" value="0.1">
+                            <span class="gha-input-unit">گرم</span>
+                        </div>
+                        <select id="ghaUnit" class="gha-select">
+                            <option value="g">گرم</option>
+                            <option value="mg">میلی‌گرم</option>
+                            <option value="kg">کیلوگرم</option>
+                        </select>
+                    </div>
+
+                    <div class="gha-price-info">
+                        <div class="gha-price-row">
+                            <span>قیمت هر گرم:</span>
+                            <strong class="text-gold" id="ghaPriceDisplay">${formatPrice(AppState.goldPrice)}</strong>
+                            <span>تومان</span>
+                        </div>
+                        <div class="gha-price-row total">
+                            <span>مبلغ قابل پرداخت:</span>
+                            <strong class="text-gold" id="ghaTotalDisplay">${formatPrice(AppState.goldPrice * 0.1)}</strong>
+                            <span>تومان</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-gold w-full" onclick="addToGha()">
+                        <i class="fas fa-plus-circle"></i> افزودن به قلک
+                    </button>
+                    
+                    <div class="gha-divider"></div>
+                    
+                    <h4><i class="fas fa-wallet"></i> خرید با کیف پول طلا</h4>
+                    <p class="text-muted">با موجودی کیف پول خود طلا خریداری کنید</p>
+                    <button class="btn-outline w-full" onclick="completeGhaPurchase()">
+                        <i class="fas fa-check-circle"></i> تکمیل خرید با کیف پول
+                    </button>
+                </div>
+
+                <!-- Right: Wallet Section -->
+                <div class="gha-card gha-wallet-card">
+                    <div class="wallet-header">
+                        <i class="fas fa-wallet"></i>
+                        <span>کیف پول طلا</span>
+                    </div>
+                    <div class="wallet-balance">
+                        <span class="wallet-amount" id="ghaWalletAmount">${formatNumber(AppState.ghaBalance)}</span>
+                        <span class="wallet-unit">گرم طلای آبشده ۱۸ عیار</span>
+                    </div>
+                    <div class="wallet-value">
+                        ارزش روز: <strong class="text-gold" id="ghaWalletValue">${formatPrice(AppState.goldPrice * AppState.ghaBalance)}</strong> تومان
+                    </div>
+                    <div class="wallet-actions">
+                        <button class="btn-outline w-full" onclick="requestPhysicalDelivery()">
+                            <i class="fas fa-truck"></i> درخواست تحویل فیزیکی
+                        </button>
+                        <button class="btn-outline w-full" onclick="showNotification('طلای شما آماده برداشت است')">
+                            <i class="fas fa-hand-holding-heart"></i> برداشت از کیف پول
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Section -->
+            <div class="gha-history-card">
+                <h4><i class="fas fa-history"></i> تاریخچه تراکنش‌های قلک</h4>
+                <div class="gha-history-list" id="ghaHistoryList">
+                    ${AppState.ghaHistory.map(h => `
+                        <div class="history-item">
+                            <div class="history-info">
+                                <span class="history-type ${h.type}">
+                                    ${h.type === 'buy' ? '🟢 خرید' : '🔴 برداشت'}
+                                </span>
+                                <span class="history-amount">${formatNumber(h.amount)} گرم</span>
+                            </div>
+                            <div class="history-price">${formatPrice(h.price)} تومان</div>
+                            <div class="history-status ${h.status}">
+                                ${h.status === 'confirmed' ? '✅ تایید شده' : '⏳ در انتظار'}
+                            </div>
+                            <div class="history-date">${h.date} ${h.time || ''}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- SHOP PAGE --------
+function renderShop() {
+    const categories = [
+        { id: 'all', label: 'همه', icon: 'fa-th-large' },
+        { id: 'gold', label: 'طلای آبشده', icon: 'fa-gold' },
+        { id: 'coin', label: 'سکه', icon: 'fa-coins' },
+        { id: 'jewelry', label: 'مصنوعات طلا', icon: 'fa-ring' },
+        { id: 'silver', label: 'نقره', icon: 'fa-gem' },
+    ];
+
+    const products = AppState.adminProducts;
+
+    return `
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-store text-gold"></i> فروشگاه طلای معتمدی</h2>
+                <p class="section-subtitle">خرید آنلاین طلا و نقره با بهترین قیمت</p>
+            </div>
+
+            <div class="shop-filters" id="shopFilters">
+                ${categories.map(c => `
+                    <button class="filter-btn ${c.id === 'all' ? 'active' : ''}" data-category="${c.id}" onclick="filterProducts('${c.id}', this)">
+                        <i class="fas ${c.icon}"></i> ${c.label}
+                    </button>
+                `).join('')}
+            </div>
+
+            <div class="shop-tools">
+                <div class="shop-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="جستجوی محصول..." id="shopSearch" oninput="searchProducts(this.value)">
+                </div>
+                <div class="shop-sort">
+                    <select id="shopSort" onchange="sortProducts(this.value)">
+                        <option value="default">مرتب‌سازی</option>
+                        <option value="price-asc">قیمت: کم به زیاد</option>
+                        <option value="price-desc">قیمت: زیاد به کم</option>
+                        <option value="name">نام محصول</option>
+                        <option value="weight">وزن</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                ${products.map(p => `
+                    <div class="product-card" data-category="${p.category}" data-price="${p.price}" data-name="${p.name}" data-weight="${p.weight}">
+                        <div class="product-image">
+                            <i class="fas fa-${p.image || 'gem'}" style="font-size:3.5rem;color:var(--gold);"></i>
+                        </div>
+                        <div class="product-badge">${p.category === 'gold' ? 'طلای آبشده' : p.category === 'coin' ? 'سکه' : p.category === 'jewelry' ? 'مصنوعات' : 'نقره'}</div>
+                        <h4 class="product-name">${p.name}</h4>
+                        <div class="product-price">${formatPrice(p.price)} تومان</div>
+                        <div class="product-meta">
+                            <span><i class="fas fa-weight-scale"></i> ${p.weight} گرم</span>
+                            <span><i class="fas fa-box"></i> ${p.stock} عدد</span>
+                        </div>
+                        <button class="btn-gold w-full" onclick="addToCart(${p.id})">
+                            <i class="fas fa-cart-plus"></i> افزودن به سبد
+                        </button>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- CART PAGE --------
+function renderCart() {
+    const items = AppState.cartItems;
+    
+    if (items.length === 0) {
+        return `
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-shopping-cart text-gold"></i> سبد خرید</h2>
+                </div>
+                <div class="empty-cart">
+                    <i class="fas fa-cart-plus"></i>
+                    <h3>سبد خرید شما خالی است</h3>
+                    <p class="text-muted">برای شروع خرید به <a href="#" onclick="navigateTo('shop')" class="text-gold">فروشگاه</a> بروید</p>
+                </div>
+            </div>
+        </section>
+        `;
+    }
+
+    let totalWeight = 0;
+    let totalPrice = 0;
+
+    const itemsHtml = items.map((item, index) => {
+        const qty = item.qty || 1;
+        const weight = item.weight * qty;
+        const price = item.price * qty;
+        totalWeight += weight;
+        totalPrice += price;
+        return `
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <div class="cart-item-icon"><i class="fas fa-${item.image || 'gem'}"></i></div>
+                <div class="cart-item-details">
+                    <h4>${item.name}</h4>
+                    <span class="cart-item-weight">⚖️ ${weight.toFixed(3)} گرم</span>
+                </div>
+            </div>
+            <div class="cart-item-price">${formatPrice(price)} تومان</div>
+            <div class="cart-item-actions">
+                <button class="qty-btn" onclick="changeCartQty(${index}, -1)">−</button>
+                <span class="qty-number">${qty}</span>
+                <button class="qty-btn" onclick="changeCartQty(${index}, 1)">+</button>
+                <button class="qty-btn remove" onclick="removeFromCart(${index})">✕</button>
+            </div>
+        </div>
+        `;
+    }).join('');
+
+    return `
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-shopping-cart text-gold"></i> سبد خرید</h2>
+                <p class="section-subtitle">${items.length} محصول در سبد خرید شما</p>
+            </div>
+
+            <div class="cart-container">
+                <div class="cart-items-list">
+                    ${itemsHtml}
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h4>خلاصه سبد خرید</h4>
+                        <div class="summary-row">
+                            <span>تعداد محصولات:</span>
+                            <strong>${items.reduce((s, i) => s + (i.qty || 1), 0)}</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>وزن کل:</span>
+                            <strong>${totalWeight.toFixed(3)} گرم</strong>
+                        </div>
+                        <div class="summary-row total">
+                            <span>مجموع قابل پرداخت:</span>
+                            <strong class="text-gold">${formatPrice(totalPrice)} تومان</strong>
+                        </div>
+                        <div class="summary-actions">
+                            <button class="btn-gold w-full" onclick="checkoutCart()">
+                                <i class="fas fa-check"></i> تکمیل خرید
+                            </button>
+                            <button class="btn-outline w-full" onclick="requestPriceCheck()">
+                                <i class="fas fa-search"></i> استعلام قیمت و موجودی
+                            </button>
+                            <button class="btn-danger w-full" onclick="clearCart()">
+                                <i class="fas fa-trash"></i> خالی کردن سبد
+                            </button>
+                        </div>
+                        <div class="summary-note">
+                            <i class="fas fa-info-circle"></i>
+                            پس از تکمیل خرید، شماره کارت برای واریز نمایش داده می‌شود
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- INVITE PAGE --------
+function renderInvite() {
+    return `
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-user-friends text-gold"></i> دعوت دوستان</h2>
+                <p class="section-subtitle">دوستان خود را دعوت کنید و پاداش طلایی بگیرید</p>
+            </div>
+
+            <div class="invite-card">
+                <div class="invite-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>کد معرف اختصاصی شما</h3>
+                <div class="invite-code" id="inviteCodeDisplay">${AppState.inviteCode}</div>
+                <div class="invite-actions">
+                    <button class="btn-gold" onclick="copyInviteCode()">
+                        <i class="fas fa-copy"></i> کپی کد
+                    </button>
+                    <button class="btn-outline" onclick="shareInvite()">
+                        <i class="fas fa-share-alt"></i> اشتراک‌گذاری
+                    </button>
+                    <button class="btn-outline" onclick="downloadInvite()">
+                        <i class="fas fa-download"></i> دانلود پوستر
+                    </button>
+                </div>
+
+                <div class="invite-stats">
+                    <div class="invite-stat">
+                        <span class="number">${AppState.referralCount}</span>
+                        <span class="label">تعداد دعوت‌ها</span>
+                    </div>
+                    <div class="invite-stat">
+                        <span class="number">${formatNumber(AppState.referralReward)}</span>
+                        <span class="label">پاداش دریافتی (گرم)</span>
+                    </div>
+                    <div class="invite-stat">
+                        <span class="number">${formatPrice(AppState.referralReward * AppState.goldPrice)}</span>
+                        <span class="label">ارزش پاداش (تومان)</span>
+                    </div>
+                </div>
+
+                <div class="invite-rules">
+                    <h4>📋 قوانین دعوت</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle text-gold"></i> به ازای هر دعوت موفق، ۰.۰۵۰ گرم طلا هدیه بگیرید</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> دوست شما نیز ۰.۰۲۰ گرم طلا هدیه دریافت می‌کند</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> پاداش‌ها به کیف پول طلای شما اضافه می‌شود</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> هیچ محدودیتی در تعداد دعوت وجود ندارد</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- ABOUT PAGE --------
+function renderAbout() {
+    return `
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-info-circle text-gold"></i> درباره طلای معتمدی</h2>
+                <p class="section-subtitle">پلتفرم معتبر خرید و فروش آنلاین طلا و نقره</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3><i class="fas fa-bullseye text-gold"></i> ماموریت ما</h3>
+                    <p>طلای معتمدی با هدف حذف هزینه‌های اضافی مانند اجرت و مالیات، بستری امن، شفاف و سریع برای سرمایه‌گذاری در فلزات گرانبها فراهم کرده است. ما به شما امکان می‌دهیم با هر بودجه‌ای، از ۱ میلی‌گرم طلا شروع به سرمایه‌گذاری کنید.</p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-shield-alt text-gold"></i> اعتبار و مجوزها</h3>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle text-gold"></i> مجوز نظام صنفی رایانه‌ای</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> نماد اعتماد الکترونیکی (اینماد)</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> مجوز اتحادیه طلا و جواهرات</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> مجوز کشوری خرده‌فروشی طلای آبشده</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> پروانه کسب سامانه معاملات آنلاین</li>
+                        <li><i class="fas fa-check-circle text-gold"></i> گواهی عضویت در انجمن فینتک</li>
+                    </ul>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-user-tie text-gold"></i> تیم ما</h3>
+                    <p>تیم طلای معتمدی متشکل از متخصصان حوزه بازار طلا، فناوری اطلاعات و مالی است که با تجربه‌ای بیش از یک دهه در بازار طلا، امنیت و شفافیت را برای سرمایه‌گذاران فراهم کرده‌اند.</p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-phone-alt text-gold"></i> ارتباط با ما</h3>
+                    <ul class="about-contact">
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@talamotamedi.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳</li>
+                        <li><i class="fas fa-clock"></i> شنبه تا پنج‌شنبه ۹ الی ۲۰</li>
+                    </ul>
+                    <div class="about-social">
+                        <a href="#" onclick="showNotification('کانال تلگرام')"><i class="fab fa-telegram"></i></a>
+                        <a href="#" onclick="showNotification('اینستاگرام')"><i class="fab fa-instagram"></i></a>
+                        <a href="#" onclick="showNotification('واتساپ')"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" onclick="showNotification('یوتیوب')"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- ADMIN PAGE --------
+function renderAdmin() {
+    const orders = AppState.adminOrders;
+    const products = AppState.adminProducts;
+    const pending = orders.filter(o => o.status === 'pending').length;
+    const confirmed = orders.filter(o => o.status === 'confirmed').length;
+    const today = orders.filter(o => o.date === new Date().toLocaleDateString('fa-IR')).length;
+
+    return `
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-user-cog text-gold"></i> پنل مدیریت</h2>
+                <p class="section-subtitle">مدیریت کامل سفارشات، محصولات و تنظیمات</p>
+            </div>
+
+            <div class="admin-header-card">
+                <div class="admin-greeting">
+                    <h3>👋 خوش آمدید، ادمین عزیز!</h3>
+                    <span class="admin-status online">🟢 آنلاین</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="btn-outline" onclick="exportAdminData()">
+                        <i class="fas fa-download"></i> خروجی
+                    </button>
+                    <button class="btn-danger" onclick="handleLogout()">
+                        <i class="fas fa-sign-out-alt"></i> خروج
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin-stats">
+                <div class="admin-stat">
+                    <span class="stat-number">${orders.length}</span>
+                    <span class="stat-label">کل سفارشات</span>
+                </div>
+                <div class="admin-stat">
+                    <span class="stat-number">${pending}</span>
+                    <span class="stat-label">در انتظار تایید</span>
+                </div>
+                <div class="admin-stat">
+                    <span class="stat-number">${confirmed}</span>
+                    <span class="stat-label">تکمیل شده</span>
+                </div>
+                <div class="admin-stat">
+                    <span class="stat-number">${today}</span>
+                    <span class="stat-label">سفارشات امروز</span>
+                </div>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchAdminTab('orders', this)">
+                    <i class="fas fa-clipboard-list"></i> سفارشات
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('products', this)">
+                    <i class="fas fa-boxes"></i> محصولات
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('settings', this)">
+                    <i class="fas fa-cog"></i> تنظیمات
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('notifications', this)">
+                    <i class="fas fa-bell"></i> اعلان‌ها
+                </button>
+            </div>
+
+            <div id="adminTabContent">
+                ${renderAdminOrders()}
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+// -------- ADMIN ORDERS TAB --------
+function renderAdminOrders() {
+    const orders = AppState.adminOrders;
+    return `
+    <div class="admin-table-wrapper">
+        <div class="admin-table-tools">
+            <div class="admin-search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="جستجوی سفارش..." id="adminOrderSearch" oninput="searchAdminOrders(this.value)">
+            </div>
+            <div class="admin-filter">
+                <select id="adminOrderFilter" onchange="filterAdminOrders(this.value)">
+                    <option value="all">همه سفارشات</option>
+                    <option value="pending">در انتظار</option>
+                    <option value="confirmed">تایید شده</option>
+                    <option value="cancelled">لغو شده</option>
+                </select>
+            </div>
+        </div>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>کاربر</th>
+                    <th>محصول</th>
+                    <th>وزن</th>
+                    <th>مبلغ</th>
+                    <th>تاریخ</th>
+                    <th>ساعت</th>
+                    <th>وضعیت</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody id="adminOrdersBody">
+                ${orders.map(o => `
+                    <tr>
+                        <td>${o.id}</td>
+                        <td><strong>${o.user}</strong></td>
+                        <td>${o.product}</td>
+                        <td>${o.weight}</td>
+                        <td>${formatPrice(o.amount)}</td>
+                        <td>${o.date}</td>
+                        <td>${o.time || '--:--'}</td>
+                        <td><span class="status-badge ${o.status}">${getStatusText(o.status)}</span></td>
+                        <td>
+                            ${o.status === 'pending' ? `
+                                <button class="admin-btn confirm" onclick="confirmOrder(${o.id})">✓</button>
+                            ` : ''}
+                            <button class="admin-btn view" onclick="viewOrder(${o.id})">👁</button>
+                            <button class="admin-btn delete" onclick="deleteOrder(${o.id})">🗑</button>
+                        </td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    </div>
+    `;
+}
+
+// -------- ADMIN PRODUCTS TAB --------
+function renderAdminProducts() {
+    const products = AppState.adminProducts;
+    return `
+    <div class="admin-products">
+        <div class="admin-products-header">
+            <button class="btn-gold" onclick="addProduct()">
+                <i class="fas fa-plus"></i> افزودن محصول جدید
+            </button>
+            <button class="btn-outline" onclick="showNotification('ویرایش دسته‌بندی فعال شد')">
+                <i class="fas fa-tags"></i> مدیریت دسته‌ها
+            </button>
+        </div>
+        <div class="admin-table-wrapper">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>نام محصول</th>
+                        <th>دسته</th>
+                        <th>قیمت (تومان)</th>
+                        <th>وزن (گرم)</th>
+                        <th>موجودی</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${products.map(p => `
+                        <tr>
+                            <td>${p.id}</td>
+                            <td><strong>${p.name}</strong></td>
+                            <td><span class="category-badge ${p.category}">${getCategoryText(p.category)}</span></td>
+                            <td>${formatPrice(p.price)}</td>
+                            <td>${p.weight}</td>
+                            <td>${p.stock}</td>
+                            <td>
+                                <button class="admin-btn edit" onclick="editProduct(${p.id})">✏️</button>
+                                <button class="admin-btn delete" onclick="deleteProduct(${p.id})">🗑</button>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    `;
+}
+
+// -------- ADMIN SETTINGS TAB --------
+function renderAdminSettings() {
+    return `
+    <div class="admin-settings">
+        <div class="settings-group">
+            <h4><i class="fas fa-credit-card text-gold"></i> شماره کارت واریزی</h4>
+            <div class="settings-row">
+                <span class="settings-value" id="adminCardDisplay">${AppState.adminCardNumber}</span>
+                <button class="admin-btn edit" onclick="changeCardNumber()">تغییر</button>
+            </div>
+        </div>
+        <div class="settings-group">
+            <h4><i class="fas fa-coins text-gold"></i> قیمت پایه طلا</h4>
+            <div class="settings-row">
+                <span class="settings-value">${formatPrice(AppState.goldPrice)} تومان</span>
+                <button class="admin-btn edit" onclick="changeGoldPrice()">تغییر</button>
+            </div>
+        </div>
+        <div class="settings-group">
+            <h4><i class="fas fa-chart-bar text-gold"></i> آمار سیستم</h4>
+            <div class="settings-stats">
+                <div class="settings-stat">
+                    <span class="label">کل کاربران:</span>
+                    <span class="value">۲۰,۰۰۰+</span>
+                </div>
+                <div class="settings-stat">
+                    <span class="label">کل سفارشات:</span>
+                    <span class="value">${AppState.adminOrders.length}</span>
+                </div>
+                <div class="settings-stat">
+                    <span class="label">محصولات:</span>
+                    <span class="value">${AppState.adminProducts.length}</span>
+                </div>
+            </div>
+        </div>
+        <div class="settings-group">
+            <h4><i class="fas fa-database text-gold"></i> پشتیبان‌گیری</h4>
+            <div class="settings-actions">
+                <button class="btn-gold" onclick="backupData()">
+                    <i class="fas fa-download"></i> دریافت پشتیبان
+                </button>
+                <button class="btn-outline" onclick="restoreData()">
+                    <i class="fas fa-upload"></i> بازیابی
+                </button>
+                <button class="btn-outline" onclick="resetData()">
+                    <i class="fas fa-trash"></i> ریست دیتا
+                </button>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+// -------- ADMIN NOTIFICATIONS TAB --------
+function renderAdminNotifications() {
+    const notifs = AppState.notifications || [];
+    return `
+    <div class="admin-notifications">
+        <div class="admin-notif-header">
+            <span>${notifs.length} اعلان</span>
+            <button class="btn-outline" onclick="clearNotifications()">پاک کردن همه</button>
+        </div>
+        <div class="notif-list">
+            ${notifs.length === 0 ? `
+                <div class="notif-empty">
+                    <i class="fas fa-bell-slash"></i>
+                    <p>هیچ اعلانی وجود ندارد</p>
+                </div>
+            ` : notifs.map(n => `
+                <div class="notif-item">
+                    <span class="notif-time">${n.time}</span>
+                    <span class="notif-message">${n.message}</span>
+                </div>
+            `).join('')}
+        </div>
+    </div>
+    `;
+}
+
+// =====================================================================
+// 6. SHOP FUNCTIONS
+// =====================================================================
+
+let currentFilter = 'all';
+
+function filterProducts(category, btn) {
+    currentFilter = category;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    applyShopFilters();
+}
+
+function searchProducts(query) {
+    applyShopFilters(query);
+}
+
+function sortProducts(sortBy) {
+    applyShopFilters(null, sortBy);
+}
+
+function applyShopFilters(query = null, sortBy = null) {
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+    
+    let products = AppState.adminProducts;
+    const searchVal = query || document.getElementById('shopSearch')?.value || '';
+    const sortVal = sortBy || document.getElementById('shopSort')?.value || 'default';
+    
+    // Filter by category
+    if (currentFilter !== 'all') {
+        products = products.filter(p => p.category === currentFilter);
+    }
+    
+    // Filter by search
+    if (searchVal.trim()) {
+        const q = searchVal.trim().toLowerCase();
+        products = products.filter(p => p.name.includes(q) || p.category.includes(q));
+    }
+    
+    // Sort
+    switch(sortVal) {
+        case 'price-asc': products.sort((a, b) => a.price - b.price); break;
+        case 'price-desc': products.sort((a, b) => b.price - a.price); break;
+        case 'name': products.sort((a, b) => a.name.localeCompare(b.name)); break;
+        case 'weight': products.sort((a, b) => a.weight - b.weight); break;
+        default: break;
+    }
+    
+    grid.innerHTML = products.map(p => `
+        <div class="product-card" data-category="${p.category}">
+            <div class="product-image">
+                <i class="fas fa-${p.image || 'gem'}" style="font-size:3.5rem;color:var(--gold);"></i>
+            </div>
+            <div class="product-badge">${getCategoryText(p.category)}</div>
+            <h4 class="product-name">${p.name}</h4>
+            <div class="product-price">${formatPrice(p.price)} تومان</div>
+            <div class="product-meta">
+                <span><i class="fas fa-weight-scale"></i> ${p.weight} گرم</span>
+                <span><i class="fas fa-box"></i> ${p.stock} عدد</span>
+            </div>
+            <button class="btn-gold w-full" onclick="addToCart(${p.id})">
+                <i class="fas fa-cart-plus"></i> افزودن به سبد
+            </button>
+        </div>
+    `).join('');
+}
+
+// =====================================================================
+// 7. CART FUNCTIONS
+// =====================================================================
+
+function addToCart(productId) {
+    const product = AppState.adminProducts.find(p => p.id === productId);
+    if (!product) {
+        showNotification('❌ محصول یافت نشد');
+        return;
+    }
+    
+    const existing = AppState.cartItems.find(item => item.id === productId);
+    if (existing) {
+        existing.qty = (existing.qty || 1) + 1;
+    } else {
+        AppState.cartItems.push({ ...product, qty: 1 });
+    }
+    
+    localStorage.setItem('tala_cart_items', JSON.stringify(AppState.cartItems));
+    updateCartBadge();
+    showNotification(`✅ ${product.name} به سبد خرید اضافه شد`);
+}
+
+function changeCartQty(index, delta) {
+    if (!AppState.cartItems[index]) return;
+    const newQty = (AppState.cartItems[index].qty || 1) + delta;
+    if (newQty <= 0) {
+        AppState.cartItems.splice(index, 1);
+    } else {
+        AppState.cartItems[index].qty = newQty;
+    }
+    localStorage.setItem('tala_cart_items', JSON.stringify(AppState.cartItems));
+    renderPage('cart');
+    updateCartBadge();
+}
+
+function removeFromCart(index) {
+    AppState.cartItems.splice(index, 1);
+    localStorage.setItem('tala_cart_items', JSON.stringify(AppState.cartItems));
+    renderPage('cart');
+    updateCartBadge();
+    showNotification('🗑 محصول از سبد خرید حذف شد');
+}
+
+function clearCart() {
+    if (AppState.cartItems.length === 0) return;
+    if (confirm('آیا از خالی کردن سبد خرید اطمینان دارید؟')) {
+        AppState.cartItems = [];
+        localStorage.setItem('tala_cart_items', JSON.stringify(AppState.cartItems));
+        renderPage('cart');
+        updateCartBadge();
+        showNotification('🗑 سبد خرید خالی شد');
+    }
+}
+
+function checkoutCart() {
+    if (AppState.cartItems.length === 0) {
+        showNotification('❌ سبد خرید خالی است');
+        return;
+    }
+    
+    const total = AppState.cartItems.reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
+    const cardNumber = AppState.adminCardNumber;
+    const itemsList = AppState.cartItems.map(i => `${i.name} (${i.qty}x)`).join(', ');
+    
+    const msg = `🏦 شماره کارت جهت واریز:\n${cardNumber}\n\n📋 محصولات:\n${itemsList}\n\n💰 مبلغ کل: ${formatPrice(total)} تومان\n\nپس از واریز، رسید را برای ادمین ارسال کنید.`;
+    alert(msg);
+    
+    // Add to admin orders
+    const totalWeight = AppState.cartItems.reduce((s, i) => s + (i.weight * (i.qty || 1)), 0);
+    const productNames = AppState.cartItems.map(i => i.name).join('، ');
+    addAdminOrder('کاربر سایت', productNames, totalWeight.toFixed(3) + ' گرم', total);
+    
+    AppState.cartItems = [];
+    localStorage.setItem('tala_cart_items', JSON.stringify(AppState.cartItems));
+    renderPage('cart');
+    updateCartBadge();
+    showNotification('✅ سفارش شما ثبت شد. منتظر تایید ادمین باشید.');
+}
+
+function requestPriceCheck() {
+    if (AppState.cartItems.length === 0) {
+        showNotification('❌ سبد خرید خالی است');
+        return;
+    }
+    showNotification('📨 استعلام قیمت و موجودی برای ادمین ارسال شد');
+    addAdminNotification('استعلام قیمت جدید از سوی کاربر');
+}
+
+function updateCartBadge() {
+    const count = AppState.cartItems.reduce((sum, item) => sum + (item.qty || 1), 0);
+    document.getElementById('cartCount').textContent = count;
+}
+
+// =====================================================================
+// 8. GHA FUNCTIONS
+// =====================================================================
+
+function updateGhaUI() {
+    const amount = parseFloat(document.getElementById('ghaAmount')?.value) || 0;
+    const unit = document.getElementById('ghaUnit')?.value || 'g';
+    let grams = amount;
+    if (unit === 'mg') grams = amount / 1000;
+    if (unit === 'kg') grams = amount * 1000;
+    
+    const total = AppState.goldPrice * grams;
+    const priceDisplay = document.getElementById('ghaPriceDisplay');
+    const totalDisplay = document.getElementById('ghaTotalDisplay');
+    const walletAmount = document.getElementById('ghaWalletAmount');
+    const walletValue = document.getElementById('ghaWalletValue');
+    
+    if (priceDisplay) priceDisplay.textContent = formatPrice(AppState.goldPrice);
+    if (totalDisplay) totalDisplay.textContent = formatPrice(total);
+    if (walletAmount) walletAmount.textContent = formatNumber(AppState.ghaBalance);
+    if (walletValue) walletValue.textContent = formatPrice(AppState.goldPrice * AppState.ghaBalance);
+}
+
+function addToGha() {
+    const amount = parseFloat(document.getElementById('ghaAmount').value);
+    if (!amount || amount <= 0) {
+        showNotification('❌ لطفاً مقدار معتبر وارد کنید');
+        return;
+    }
+    
+    const unit = document.getElementById('ghaUnit').value;
+    let grams = amount;
+    if (unit === 'mg') grams = amount / 1000;
+    if (unit === 'kg') grams = amount * 1000;
+    
+    if (grams > 10000) {
+        showNotification('❌ حداکثر ۱۰ کیلوگرم مجاز است');
+        return;
+    }
+    
+    const total = AppState.goldPrice * grams;
+    const cardNumber = AppState.adminCardNumber;
+    
+    const confirmMsg = `🪙 خرید ${grams.toFixed(3)} گرم طلا\n💰 مبلغ: ${formatPrice(total)} تومان\n🏦 شماره کارت: ${cardNumber}\n\nپس از واریز، رسید را برای ادمین ارسال کنید.`;
+    
+    if (confirm(confirmMsg)) {
+        AppState.ghaBalance += grams;
+        AppState.ghaHistory.unshift({
+            type: 'buy',
+            amount: grams,
+            price: total,
+            status: 'pending',
+            date: new Date().toLocaleDateString('fa-IR'),
+            time: new Date().toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'})
+        });
+        localStorage.setItem('tala_gha_balance', AppState.ghaBalance);
+        localStorage.setItem('tala_gha_history', JSON.stringify(AppState.ghaHistory));
+        renderPage('gha');
+        updateGhaUI();
+        showNotification(`✅ ${grams.toFixed(3)} گرم طلا به کیف پول شما اضافه شد (در انتظار تایید)`);
+        addAdminOrder('کیف پول قلک', 'خرید قلک', grams + ' گرم', total);
+    }
+}
+
+function completeGhaPurchase() {
+    if (AppState.ghaBalance <= 0) {
+        showNotification('❌ موجودی کیف پول طلا کافی نیست');
+        return;
+    }
+    
+    const productName = prompt('نام محصول مورد نظر:');
+    if (!productName) return;
+    
+    const weight = prompt('وزن (گرم):');
+    if (!weight || isNaN(weight) || parseFloat(weight) <= 0) {
+        showNotification('❌ وزن نامعتبر');
+        return;
+    }
+    
+    const w = parseFloat(weight);
+    const total = AppState.goldPrice * w;
+    
+    if (w > AppState.ghaBalance) {
+        showNotification(`❌ موجودی کافی نیست. موجودی: ${AppState.ghaBalance.toFixed(3)} گرم`);
+        return;
+    }
+    
+    if (confirm(`🪙 خرید ${w} گرم ${productName}\n💰 مبلغ: ${formatPrice(total)} تومان\n💳 پرداخت با کیف پول طلا`)) {
+        AppState.ghaBalance -= w;
+        AppState.ghaHistory.unshift({
+            type: 'buy',
+            amount: w,
+            price: total,
+            status: 'confirmed',
+            date: new Date().toLocaleDateString('fa-IR'),
+            time: new Date().toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'})
+        });
+        localStorage.setItem('tala_gha_balance', AppState.ghaBalance);
+        localStorage.setItem('tala_gha_history', JSON.stringify(AppState.ghaHistory));
+        renderPage('gha');
+        updateGhaUI();
+        showNotification(`✅ خرید ${productName} با موفقیت انجام شد`);
+        addAdminOrder('کیف پول طلا', productName, w + ' گرم', total);
+    }
+}
+
+function requestPhysicalDelivery() {
+    if (AppState.ghaBalance < 0.1) {
+        showNotification('❌ حداقل ۰.۱ گرم طلا برای تحویل فیزیکی لازم است');
+        return;
+    }
+    showNotification(`✅ درخواست تحویل ${AppState.ghaBalance.toFixed(3)} گرم طلا ثبت شد. با شما تماس گرفته می‌شود.`);
+    addAdminOrder('درخواست تحویل', 'تحویل فیزیکی', AppState.ghaBalance.toFixed(3) + ' گرم', AppState.goldPrice * AppState.ghaBalance);
+}
+
+// =====================================================================
+// 9. ADMIN FUNCTIONS
+// =====================================================================
+
+function updateAdminUI() {
+    // Stats
+    const orders = AppState.adminOrders;
+    const pending = orders.filter(o => o.status === 'pending').length;
+    const confirmed = orders.filter(o => o.status === 'confirmed').length;
+    const today = orders.filter(o => o.date === new Date().toLocaleDateString('fa-IR')).length;
+    
+    document.querySelectorAll('.admin-stat .stat-number').forEach((el, i) => {
+        const values = [orders.length, pending, confirmed, today];
+        if (i < values.length) el.textContent = values[i];
+    });
+}
+
+function getStatusText(status) {
+    const map = { pending: 'در انتظار', confirmed: 'تایید شده', cancelled: 'لغو شده', delivered: 'تحویل شده' };
+    return map[status] || status;
+}
+
+function getCategoryText(category) {
+    const map = { gold: 'طلای آبشده', coin: 'سکه', jewelry: 'مصنوعات', silver: 'نقره' };
+    return map[category] || category;
+}
+
+function addAdminOrder(user, product, weight, amount) {
+    AppState.adminOrders.unshift({
+        id: AppState.adminOrders.length + 1,
+        user: user,
+        product: product,
+        weight: weight,
+        amount: amount,
+        status: 'pending',
+        date: new Date().toLocaleDateString('fa-IR'),
+        time: new Date().toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'})
+    });
+    localStorage.setItem('tala_admin_orders', JSON.stringify(AppState.adminOrders));
+    addAdminNotification(`سفارش جدید از ${user}`);
+}
+
+function addAdminNotification(message) {
+    if (!AppState.notifications) AppState.notifications = [];
+    AppState.notifications.unshift({
+        message: message,
+        time: new Date().toLocaleTimeString('fa-IR', {hour:'2-digit', minute:'2-digit'})
+    });
+    localStorage.setItem('tala_admin_notifications', JSON.stringify(AppState.notifications));
+}
+
+function confirmOrder(id) {
+    const order = AppState.adminOrders.find(o => o.id === id);
+    if (order) {
+        order.status = 'confirmed';
+        localStorage.setItem('tala_admin_orders', JSON.stringify(AppState.adminOrders));
+        renderPage('admin');
+        showNotification(`✅ سفارش #${id} تایید شد`);
+    }
+}
+
+function viewOrder(id) {
+    const order = AppState.adminOrders.find(o => o.id === id);
+    if (order) {
+        alert(`📋 جزییات سفارش #${order.id}\n\n👤 کاربر: ${order.user}\n📦 محصول: ${order.product}\n⚖️ وزن: ${order.weight}\n💰 مبلغ: ${formatPrice(order.amount)}\n📅 تاریخ: ${order.date}\n⏰ ساعت: ${order.time}\n📌 وضعیت: ${getStatusText(order.status)}`);
+    }
+}
+
+function deleteOrder(id) {
+    if (confirm(`آیا از حذف سفارش #${id} اطمینان دارید؟`)) {
+        AppState.adminOrders = AppState.adminOrders.filter(o => o.id !== id);
+        localStorage.setItem('tala_admin_orders', JSON.stringify(AppState.adminOrders));
+        renderPage('admin');
+        showNotification(`🗑 سفارش #${id} حذف شد`);
+    }
+}
+
+function searchAdminOrders(query) {
+    const rows = document.querySelectorAll('#adminOrdersBody tr');
+    const q = query.trim().toLowerCase();
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+    });
+}
+
+function filterAdminOrders(status) {
+    const rows = document.querySelectorAll('#adminOrdersBody tr');
+    rows.forEach(row => {
+        if (status === 'all') {
+            row.style.display = '';
+            return;
+        }
+        const statusCell = row.querySelector('.status-badge');
+        const statusText = statusCell?.textContent.trim() || '';
+        const map = { pending: 'در انتظار', confirmed: 'تایید شده', cancelled: 'لغو شده' };
+        row.style.display = statusText === map[status] ? '' : 'none';
+    });
+}
+
+function switchAdminTab(tab, btn) {
+    document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    
+    const content = document.getElementById('adminTabContent');
+    switch(tab) {
+        case 'orders': content.innerHTML = renderAdminOrders(); break;
+        case 'products': content.innerHTML = renderAdminProducts(); break;
+        case 'settings': content.innerHTML = renderAdminSettings(); break;
+        case 'notifications': content.innerHTML = renderAdminNotifications(); break;
+    }
+}
+
+function addProduct() {
+    const name = prompt('نام محصول:');
+    if (!name) return;
+    const category = prompt('دسته (gold/coin/jewelry/silver):');
+    if (!category) return;
+    const price = prompt('قیمت (تومان):');
+    if (!price || isNaN(price)) return;
+    const weight = prompt('وزن (گرم):');
+    if (!weight || isNaN(weight)) return;
+    const stock = prompt('موجودی:');
+    if (!stock || isNaN(stock)) return;
+    
+    AppState.adminProducts.push({
+        id: AppState.adminProducts.length + 1,
+        name,
+        category,
+        price: parseInt(price),
+        weight: parseFloat(weight),
+        stock: parseInt(stock),
+        image: 'gem'
+    });
+    localStorage.setItem('tala_admin_products', JSON.stringify(AppState.adminProducts));
+    renderPage('admin');
+    showNotification(`✅ محصول ${name} با موفقیت اضافه شد`);
+}
+
+function editProduct(id) {
+    const product = AppState.adminProducts.find(p => p.id === id);
+    if (!product) return;
+    
+    const name = prompt('نام جدید:', product.name) || product.name;
+    const price = prompt('قیمت جدید:', product.price) || product.price;
+    const stock = prompt('موجودی جدید:', product.stock) || product.stock;
+    const weight = prompt('وزن جدید:', product.weight) || product.weight;
+    
+    product.name = name;
+    product.price = parseInt(price);
+    product.stock = parseInt(stock);
+    product.weight = parseFloat(weight);
+    
+    localStorage.setItem('tala_admin_products', JSON.stringify(AppState.adminProducts));
+    renderPage('admin');
+    showNotification(`✅ محصول ${product.name} بروزرسانی شد`);
+}
+
+function deleteProduct(id) {
+    if (confirm('آیا از حذف این محصول اطمینان دارید؟')) {
+        AppState.adminProducts = AppState.adminProducts.filter(p => p.id !== id);
+        localStorage.setItem('tala_admin_products', JSON.stringify(AppState.adminProducts));
+        renderPage('admin');
+        showNotification('🗑 محصول حذف شد');
+    }
+}
+
+function changeCardNumber() {
+    const newCard = prompt('شماره کارت جدید:', AppState.adminCardNumber);
+    if (newCard && newCard.length >= 16) {
+        AppState.adminCardNumber = newCard;
+        localStorage.setItem('tala_admin_card', newCard);
+        renderPage('admin');
+        showNotification('✅ شماره کارت تغییر یافت');
+    }
+}
+
+function changeGoldPrice() {
+    const newPrice = prompt('قیمت جدید هر گرم طلا (تومان):', AppState.goldPrice);
+    if (newPrice && !isNaN(newPrice)) {
+        AppState.goldPrice = parseInt(newPrice);
+        updatePriceDisplay();
+        renderPage('admin');
+        showNotification('✅ قیمت طلا بروزرسانی شد');
+    }
+}
+
+function clearNotifications() {
+    AppState.notifications = [];
+    localStorage.setItem('tala_admin_notifications', JSON.stringify(AppState.notifications));
+    renderPage('admin');
+    showNotification('✅ همه اعلان‌ها پاک شدند');
+}
+
+function backupData() {
+    const data = {
+        orders: AppState.adminOrders,
+        products: AppState.adminProducts,
+        cardNumber: AppState.adminCardNumber,
+        goldPrice: AppState.goldPrice,
+        ghaBalance: AppState.ghaBalance,
+        ghaHistory: AppState.ghaHistory,
+        date: new Date().toISOString()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `talamotamedi_backup_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showNotification('✅ پشتیبان با موفقیت دریافت شد');
+}
+
+function restoreData() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            try {
+                const data = JSON.parse(ev.target.result);
+                if (data.orders) { AppState.adminOrders = data.orders; localStorage.setItem('tala_admin_orders', JSON.stringify(data.orders)); }
+                if (data.products) { AppState.adminProducts = data.products; localStorage.setItem('tala_admin_products', JSON.stringify(data.products)); }
+                if (data.cardNumber) { AppState.adminCardNumber = data.cardNumber; localStorage.setItem('tala_admin_card', data.cardNumber); }
+                if (data.goldPrice) { AppState.goldPrice = data.goldPrice; updatePriceDisplay(); }
+                if (data.ghaBalance) { AppState.ghaBalance = data.ghaBalance; localStorage.setItem('tala_gha_balance', data.ghaBalance); }
+                if (data.ghaHistory) { AppState.ghaHistory = data.ghaHistory; localStorage.setItem('tala_gha_history', JSON.stringify(data.ghaHistory)); }
+                renderPage('admin');
+                showNotification('✅ بازیابی با موفقیت انجام شد');
+            } catch (err) {
+                showNotification('❌ فایل نامعتبر است');
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+function resetData() {
+    if (confirm('⚠️ آیا از ریست کامل داده‌ها اطمینان دارید؟ این عمل غیرقابل بازگشت است!')) {
+        localStorage.clear();
+        location.reload();
+    }
+}
+
+function exportAdminData() {
+    const data = {
+        orders: AppState.adminOrders,
+        products: AppState.adminProducts,
+        cardNumber: AppState.adminCardNumber,
+        goldPrice: AppState.goldPrice,
+        stats: {
+            total: AppState.adminOrders.length,
+            pending: AppState.adminOrders.filter(o => o.status === 'pending').length,
+            confirmed: AppState.adminOrders.filter(o => o.status === 'confirmed').length,
+        },
+        exportDate: new Date().toISOString()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `talamotamedi_export_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showNotification('✅ خروجی با موفقیت دریافت شد');
+}
+
+function handleLogout() {
+    if (confirm('آیا از خروج اطمینان دارید؟')) {
+        AppState.isAdmin = false;
+        localStorage.removeItem('tala_admin');
+        document.getElementById('adminLink').style.display = 'none';
+        showNotification('👋 با موفقیت خارج شدید');
+        navigateTo('home');
+    }
+}
+
+// =====================================================================
+// 10. INVITE FUNCTIONS
+// =====================================================================
+
+function copyInviteCode() {
+    const code = document.getElementById('inviteCodeDisplay')?.textContent || AppState.inviteCode;
+    navigator.clipboard.writeText(code).then(() => {
+        showNotification('✅ کد معرف کپی شد: ' + code);
+    }).catch(() => {
+        prompt('کد معرف را کپی کنید:', code);
+    });
+}
+
+function shareInvite() {
+    const code = AppState.inviteCode;
+    if (navigator.share) {
+        navigator.share({
+            title: 'طلای معتمدی',
+            text: `با کد معرف ${code} از طلای معتمدی خرید کنید و پاداش بگیرید!`,
+            url: 'https://talamotamedi.com'
+        }).catch(() => {});
+    } else {
+        showNotification(`لینک دعوت: https://talamotamedi.com?ref=${code}`);
+    }
+}
+
+function downloadInvite() {
+    showNotification('📥 پوستر دعوت در حال دانلود...');
+    // شبیه‌سازی دانلود
+    setTimeout(() => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 800;
+        canvas.height = 600;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillRect(0, 0, 800, 600);
+        ctx.fillStyle = '#d4a017';
+        ctx.font = 'bold 60px Vazirmatn';
+        ctx.textAlign = 'center';
+        ctx.fillText('طلای معتمدی', 400, 150);
+        ctx.fillStyle = '#fff';
+        ctx.font = '30px Vazirmatn';
+        ctx.fillText(`کد معرف: ${AppState.inviteCode}`, 400, 300);
+        ctx.font = '20px Vazirmatn';
+        ctx.fillStyle = '#aaa';
+        ctx.fillText('با این کد ثبت‌نام کنید و پاداش بگیرید!', 400, 400);
+        const link = document.createElement('a');
+        link.download = 'invite_poster.png';
+        link.href = canvas.toDataURL();
+        link.click();
+        showNotification('✅ پوستر دانلود شد');
+    }, 1000);
+}
+
+// =====================================================================
+// 11. CHART FUNCTIONS
+// =====================================================================
+
+let chartInstance = null;
+let chartRange = 'week';
+
+function initChart() {
+    const ctx = document.getElementById('goldChart');
+    if (!ctx) return;
+    
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+    
+    const data = generateChartData(chartRange);
+    
+    chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: 'قیمت هر گرم طلا (تومان)',
+                data: data.prices,
+                borderColor: '#d4a017',
+                backgroundColor: 'rgba(212, 160, 23, 0.08)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#d4a017',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 8,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.parsed.y.toLocaleString('fa-IR') + ' تومان';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    ticks: {
+                        callback: function(value) {
+                            return value.toLocaleString('fa-IR');
+                        }
+                    },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            }
+        }
+    });
+    
+    window._chartInstance = chartInstance;
+}
+
+function generateChartData(range) {
+    const labels = [];
+    const prices = [];
+    const currentPrice = AppState.goldPrice;
+    let count = 7;
+    let basePrice = currentPrice - 1000000;
+    
+    if (range === 'month') count = 30;
+    else if (range === 'year') count = 365;
+    else if (range === 'day') count = 24;
+    
+    for (let i = count - 1; i >= 0; i--) {
+        const date = new Date();
+        if (range === 'day') {
+            date.setHours(date.getHours() - i);
+            labels.push(date.getHours() + ':00');
+        } else {
+            date.setDate(date.getDate() - i);
+            labels.push(date.toLocaleDateString('fa-IR'));
+        }
+        const randomChange = (Math.random() - 0.5) * 400000;
+        prices.push(Math.round(basePrice + randomChange + (i / count) * 800000));
+    }
+    prices[prices.length - 1] = currentPrice;
+    return { labels, prices };
+}
+
+function updateChartData() {
+    if (!chartInstance) {
+        initChart();
+        return;
+    }
+    const data = generateChartData(chartRange);
+    chartInstance.data.labels = data.labels;
+    chartInstance.data.datasets[0].data = data.prices;
+    chartInstance.update();
+    showNotification('📊 نمودار بروزرسانی شد');
+}
+
+function setChartRange(range, btn) {
+    chartRange = range;
+    document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const labels = { day: '۲۴ ساعت', week: 'هفته', month: 'ماه', year: 'سال' };
+    showNotification(`📊 بازه تغییر کرد: ${labels[range]}`);
+    updateChartData();
+}
+
+function generateDailyPrices() {
+    const days = ['امروز', 'دیروز', '۳ روز پیش', '۴ روز پیش', '۵ روز پیش', '۶ روز پیش'];
+    const prices = [
+        AppState.goldPrice,
+        AppState.goldPrice - Math.floor(Math.random() * 200000),
+        AppState.goldPrice - Math.floor(Math.random() * 400000),
+        AppState.goldPrice - Math.floor(Math.random() * 600000),
+        AppState.goldPrice - Math.floor(Math.random() * 800000),
+        AppState.goldPrice - Math.floor(Math.random() * 1000000),
+    ];
+    return days.map((d, i) => `
+        <div class="price-history-item">
+            <span class="day">${d}</span>
+            <span class="price">${formatPrice(prices[i])}</span>
+        </div>
+    `).join('');
+}
+
+// =====================================================================
+// 12. ROUTING & INITIALIZATION
+// =====================================================================
+
+// Handle browser back/forward
+window.addEventListener('popstate', function() {
+    const hash = window.location.hash.replace('#', '') || 'home';
+    navigateTo(hash);
+});
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for admin
+    if (localStorage.getItem('tala_admin') === 'true') {
+        AppState.isAdmin = true;
+        document.getElementById('adminLink').style.display = 'block';
+    }
+    
+    // Check for user
+    const user = localStorage.getItem('tala_user');
+    if (user) {
+        AppState.userPhone = user;
+    }
+    
+    // Load initial page
+    const hash = window.location.hash.replace('#', '') || 'home';
+    navigateTo(hash);
+    
+    // Update cart badge
+    updateCartBadge();
+    
+    // Start price simulation
+    setInterval(updateGoldPrice, 30000);
+    
+    // Show welcome
+    setTimeout(() => {
+        showNotification('🏆 به طلای معتمدی خوش آمدید!');
+    }, 1000);
+});
+
+// =====================================================================
+// 13. KEYBOARD SHORTCUTS (For Power Users)
+// =====================================================================
+
+document.addEventListener('keydown', function(e) {
+    // Ctrl+1-8 for navigation
+    if (e.ctrlKey && e.key >= '1' && e.key <= '8') {
+        e.preventDefault();
+        const pages = ['home', 'chart', 'gha', 'shop', 'cart', 'invite', 'about', 'admin'];
+        const page = pages[parseInt(e.key) - 1];
+        if (page) navigateTo(page);
+    }
+    // Escape to close notification
+    if (e.key === 'Escape') {
+        closeNotification();
+    }
+});
+
+console.log('🪙 طلای معتمدی با موفقیت بارگذاری شد!');
+console.log('📱 شماره ادمین: 09981064505');
+console.log('⌨️ میانبرهای صفحه: Ctrl+1 تا Ctrl+8');
+console.log('📦 نسخه: 2.0.0');
+console.log('❤️ با افتخار برای سرمایه‌گذاران طلا');
+</script>
 </body>
 </html>
