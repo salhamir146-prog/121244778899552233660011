@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلای معتمدی | پلتفرم خرید و فروش آنلاین طلا</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="خرید و فروش آنلاین طلا و نقره بدون اجرت و مالیات با ضمانت اصالت">
+    <meta property="og:title" content="طلای معتمدی">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#d4a017">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <!-- ===========================================
+    PRELOADER
+    =========================================== -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="gold-spinner"></div>
+            <p style="color:#d4a017;margin-top:20px;font-weight:bold;">طلای معتمدی</p>
+        </div>
+    </div>
+
+    <!-- ===========================================
+    HEADER
+    =========================================== -->
+    <header class="header" id="mainHeader">
+        <div class="container header-inner">
+            <div class="logo" onclick="navigateTo('home')">
+                <i class="fas fa-coins"></i>
+                <span>
+                    طلای معتمدی
+                    <small>پلتفرم معتبر طلا</small>
+                </span>
+            </div>
+
+            <div class="header-price" id="headerPrice">
+                <i class="fas fa-gem"></i>
+                <span>هر گرم طلا ۱۸ عیار:</span>
+                <span class="gold-price" id="headerGoldPrice">۱۸,۳۲۷,۶۰۰</span>
+                <span>تومان</span>
+                <span class="price-change" id="priceChange">+۲.۴۲%</span>
+            </div>
+
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav class="nav-menu" id="mainMenu">
+                <a href="#" class="active" data-page="home">
+                    <i class="fas fa-home"></i> خانه
+                </a>
+                <a href="#" data-page="chart">
+                    <i class="fas fa-chart-line"></i> نمودار
+                </a>
+                <a href="#" data-page="gha">
+                    <i class="fas fa-piggy-bank"></i> قلک
+                    <span class="badge" id="ghaBadge">۰.۷۰۰g</span>
+                </a>
+                <a href="#" data-page="shop">
+                    <i class="fas fa-store"></i> خرید
+                </a>
+                <a href="#" data-page="cart">
+                    <i class="fas fa-shopping-cart"></i> سبد
+                    <span class="badge" id="cartCount">۰</span>
+                </a>
+                <a href="#" data-page="invite">
+                    <i class="fas fa-user-friends"></i> دعوت
+                </a>
+                <a href="#" data-page="about">
+                    <i class="fas fa-info-circle"></i> درباره
+                </a>
+                <a href="#" data-page="admin" id="adminLink" style="display:none;">
+                    <i class="fas fa-user-cog"></i> مدیریت
+                </a>
+                <button class="btn-gold" onclick="handleAuth()">
+                    <i class="fas fa-user"></i> ورود
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===========================================
+    NOTIFICATION SYSTEM
+    =========================================== -->
+    <div class="notification" id="notif">
+        <div class="notif-content">
+            <span class="notif-icon"><i class="fas fa-bell"></i></span>
+            <span id="notifText">پیام سیستم</span>
+            <span class="notif-close" onclick="closeNotif()">&times;</span>
+        </div>
+    </div>
+
+    <!-- ===========================================
+    MAIN CONTENT
+    =========================================== -->
+    <main class="main-content">
+        <!-- تمام صفحات با JavaScript لود می‌شوند -->
+        <div id="pageContainer"></div>
+    </main>
+
+    <!-- ===========================================
+    FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fas fa-coins" style="color:#d4a017;"></i> طلای معتمدی</h4>
+                    <p style="color:#888;font-size:0.9rem;">پلتفرم معتبر خرید و فروش آنلاین طلا و نقره با مجوزهای رسمی</p>
+                    <div class="footer-trust" style="margin-top:12px;">
+                        <span>✅ اینماد</span>
+                        <span>✅ اتحادیه طلا</span>
+                        <span>✅ نظام صنفی</span>
+                    </div>
+                </div>
+                <div>
+                    <h4>دسترسی سریع</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('home')">خانه</a></li>
+                        <li><a href="#" onclick="navigateTo('shop')">خرید طلا</a></li>
+                        <li><a href="#" onclick="navigateTo('gha')">قلک طلا</a></li>
+                        <li><a href="#" onclick="navigateTo('chart')">نمودار قیمت</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>خدمات</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('shop')">خرید قسطی</a></li>
+                        <li><a href="#" onclick="navigateTo('gha')">سرمایه‌گذاری</a></li>
+                        <li><a href="#" onclick="showNotif('درخواست وام ثبت شد')">وام طلا</a></li>
+                        <li><a href="#" onclick="showNotif('تحویل فیزیکی درخواست شد')">تحویل فیزیکی</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>تماس با ما</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@talamotamedi.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، ولیعصر</li>
+                    </ul>
+                    <div class="social-icons" style="margin-top:12px;">
+                        <i class="fab fa-telegram" onclick="showNotif('کانال تلگرام')"></i>
+                        <i class="fab fa-instagram" onclick="showNotif('اینستاگرام')"></i>
+                        <i class="fab fa-whatsapp" onclick="showNotif('واتساپ')"></i>
+                        <i class="fab fa-youtube" onclick="showNotif('یوتیوب')"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copy">
+                &copy; ۱۴۰۵ تمامی حقوق برای <strong>طلای معتمدی</strong> محفوظ است. | 
+                <span style="color:#666;font-size:0.8rem;">طراحی و توسعه با ❤️</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===========================================
+    SCRIPTS
+    =========================================== -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/gha.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
